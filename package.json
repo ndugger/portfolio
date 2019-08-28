@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "...",
   "main": "dist/portfolio.app.js",
+  "type": "module",
   "scripts": {
+    "compile": "node --experimental-modules compile.mjs",
     "test": "jest"
   },
   "repository": {
