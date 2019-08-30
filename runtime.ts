@@ -19,8 +19,8 @@ catch (error) {
             }
         </style>
         <h1>Your Browser Is Not Supported</h1>
-        <h3>Please Upgrade (Chrome or Firefox preferred)</h2>
-        <h5>${ error.message }</h3>
+        <h3>Please Upgrade (Chrome or Firefox preferred)</h3>
+        <h5>${ error.message }</h5>
     `;
 }
 

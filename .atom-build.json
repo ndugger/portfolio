@@ -1,0 +1,4 @@
+{
+    "cmd": "npm run compile",
+    "name": "compile"
+}
