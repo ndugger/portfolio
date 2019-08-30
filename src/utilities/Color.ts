@@ -26,7 +26,7 @@ class Color {
 
 namespace Color {
 
-    export function rgba(red: number, green: number, blue: number, alpha: number): Color {
+    export function rgba(red: number, green: number, blue: number, alpha: number = 1): Color {
         return new Color('rgb', alpha, [ red, green, blue ]);
     }
 }
