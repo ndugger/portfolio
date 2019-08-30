@@ -9,6 +9,10 @@ class Color {
         this.type = type;
         this.values = values;
     }
+    
+    public alpha(alpha: number): Color {
+        return new Color(this.type, alpha, this.values);
+    }
 
     public toString(): string {
         switch (this.type) {
