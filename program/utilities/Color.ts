@@ -9,8 +9,8 @@ class Color {
         this.type = type;
         this.values = values;
     }
-    
-    public alpha(alpha: number): Color {
+
+    public opacity(alpha: number): Color {
         return new Color(this.type, alpha, this.values);
     }
 
@@ -26,8 +26,8 @@ class Color {
 
 namespace Color {
 
-    export function rgba(red: number, green: number, blue: number, alpha: number = 1): Color {
-        return new Color('rgb', alpha, [ red, green, blue ]);
+    export function rgb(red: number, green: number, blue: number): Color {
+        return new Color('rgb', 1, [ red, green, blue ]);
     }
 }
 

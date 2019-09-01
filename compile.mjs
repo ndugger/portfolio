@@ -13,7 +13,7 @@ function copyFolderSync(from, to) {
     }
 
     fs.readdirSync(from).forEach(element => {
-        if (fs.lstatSync(path.join(from, element)).isFile()) {
+        if (fs.statSync(path.join(from, element)).isFile()) {
             fs.copyFileSync(path.join(from, element), path.join(to, element));
         } else {
             copyFolderSync(path.join(from, element), path.join(to, element));
@@ -42,7 +42,7 @@ webpack({
     },
     resolve: {
         alias: {
-            this: path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src')
+            program: path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'program')
         },
         extensions: [
             '.ts',
@@ -52,13 +52,12 @@ webpack({
         ]
     }
 }, () => {
-    const application = fs.readFileSync('bin/application.js', 'utf8');
-    const settings = JSON.parse(fs.readFileSync('settings.json', 'utf8'));
     const template = `
         <!doctype html>
-        <html lang="${ settings.language }">
+        <html lang="en_us">
             <head>
-                <title>${ settings.title }</title>
+                <title>Nick Dugger</title>
+                <link href="https://fonts.googleapis.com/css?family=Montserrat:300,600|Source+Code+Pro&display=swap" rel="stylesheet"/>
                 <style>
                     body, html {
                         height: 100%;
@@ -68,7 +67,7 @@ webpack({
                 </style>
             </head>
             <body>
-                <script>${ application }</script>
+                <script>${ fs.readFileSync('bin/application.js', 'utf8') }</script>
             </body>
         </html>
     `;
@@ -85,5 +84,5 @@ webpack({
 
     fs.writeFileSync('exe/application.html', template, 'utf8');
 
-    copyFolderSync('src/assets', 'exe/assets');
+    copyFolderSync('assets/', 'exe/assets/');
 });

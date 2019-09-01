@@ -1,4 +1,4 @@
-import Application from 'this/components/Application';
+import Application from 'program/components/Application';
 
 function main(): void {
     document.body.append(new Application());
