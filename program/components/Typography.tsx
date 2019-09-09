@@ -21,8 +21,19 @@ class Typography extends Cortex.Component {
     public theme(): string {
         return `
             :host {
+                display: inline-block;
                 font-size: ${ this.size }rem;
                 font-weight: ${ this.bold ? 'bold' : '300' };
+                max-width: 960px;
+                cursor: default;
+                user-select: text;
+            }
+
+            :host::selection {
+                background-color: ${ Palette.black.opacity(0.3) };
+                color: ${ Palette.white.opacity(0.5) };
+                opacity: 1;
+                tex-shadow: none;
             }
 
             #code {
@@ -32,6 +43,7 @@ class Typography extends Cortex.Component {
 
             #content {
                 font-family: ${ Palette.font.content }, sans-serif;
+                line-height: 1.8;
             }
 
             #heading {

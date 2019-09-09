@@ -1,6 +1,7 @@
 import * as Cortex from 'cortex';
 
 import Block from 'program/components/layout/Block';
+import Icon from 'program/components/Icon';
 import Reveal from 'program/components/Reveal';
 import Typography from 'program/components/Typography';
 
@@ -10,6 +11,8 @@ class NavigationItem extends Cortex.Component {
 
     public active: boolean;
     public hover: boolean;
+    public icon: string;
+    public name: string;
 
     public render(): Cortex.Element[] {
         const handlers = {
@@ -19,18 +22,21 @@ class NavigationItem extends Cortex.Component {
 
         return [
             <Block { ...handlers }>
+                { this.icon && [
+                    <Icon glyph={ this.icon }/>
+                ] }
                 <Typography size={ 0.85 } type='content'>
-                    { this.textContent }
+                    { this.name }
                 </Typography>
-                { !this.active && this.hover && (
+                { !this.active && this.hover && [
                     <Reveal duration={ 250 } id='hover'>
                         <Block>
                             <Typography size={ 0.85 }>
-                                { this.textContent }
+                                { this.name }
                             </Typography>
                         </Block>
                     </Reveal>
-                ) }
+                ] }
             </Block>
         ];
     }
@@ -57,7 +63,7 @@ class NavigationItem extends Cortex.Component {
             }
 
             #hover {
-                background-color: ${ Palette.primary.medium.opacity(0.3) };
+                background-color: ${ Palette.primary.medium.opacity(0.25) };
                 color: ${ Palette.white };
                 left: 0;
                 padding: 0 24px;
@@ -73,6 +79,8 @@ class Navigation extends Cortex.Component {
 
     public static Item = NavigationItem;
 
+    public dense: boolean;
+
     public render(): Cortex.Element[] {
         return [
             <HTMLSlotElement/>
@@ -83,7 +91,7 @@ class Navigation extends Cortex.Component {
         return `
             :host {
                 background-color: ${ Palette.main.dark.opacity(0.66) };
-                width: 280px;
+                width: ${ this.dense ? 120 : 280 }px;
             }
         `;
     }

@@ -17,15 +17,16 @@ namespace Palette {
     };
 
     export const primary = {
-        medium: Color.rgb(95, 53, 192)
+        medium: Color.rgb(5, 158, 83)//Color.rgb(95, 53, 192)
     };
 
     export const secondary = {
-        medium: Color.rgb(19, 180, 95)
+        medium: Color.rgb(5, 158, 83)
     };
 
     export const textures = {
-        backdrop: Asset.jpg('backdrop_overlay')
+        backdrop: Asset.jpg('backdrop_overlay'),
+        noise: Asset.webp('noise')
     };
 
     export const white = Color.rgb(255, 255, 255);

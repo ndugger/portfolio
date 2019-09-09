@@ -167,6 +167,9 @@ class Reveal extends Cortex.Component {
                 animation-fill-mode: forwards;
                 animation-iteration-count: 1;
                 animation-name: slide;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
                 position: relative;
             }
         `;

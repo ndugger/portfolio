@@ -51,15 +51,22 @@ webpack({
             '.jsx'
         ]
     }
-}, () => {
+}, error => {
+
+    if (error) {
+        console.error(error);
+    }
+
     const template = `
         <!doctype html>
         <html lang="en_us">
             <head>
                 <title>Nick Dugger</title>
                 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,600|Source+Code+Pro&display=swap" rel="stylesheet"/>
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
                 <style>
                     body, html {
+                        background: black;
                         height: 100%;
                         margin: 0;
                         width: 100%;

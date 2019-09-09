@@ -12,6 +12,7 @@ class Button extends Cortex.Component {
 
     public color: 'primary' | 'secondary' = 'primary';
     public dense: boolean;
+    public full: boolean;
 
     public render(): Cortex.Element[] {
         const handlers = {
@@ -44,11 +45,14 @@ class Button extends Cortex.Component {
                 border: 3px solid ${ Palette[ this.color ].medium };
                 border-radius: 100px;
                 box-shadow: 0 0 32px ${ Palette.main.dark.opacity(0.5) };
+                box-sizing: border-box;
                 color: ${ Palette.white.opacity(0.66) };
                 display: inline-block;
                 overflow: hidden;
                 position: relative;
+                text-align: center;
                 transition: all 200ms linear;
+                width: ${ this.full ? '100%' : 'auto' };
             }
 
             :host(:hover) {
@@ -66,12 +70,16 @@ class Button extends Cortex.Component {
             }
 
             #hover {
+                align-items: center;
                 background-color: ${ Palette[ this.color ].medium.opacity(0.3) };
                 border-radius: 100px;
                 color: ${ Palette.white };
+                display: flex;
+                justify-content: center;
                 left: 0;
                 position: absolute;
                 top: 0;
+                width: 100%;
             }
 
             .${ Block.name } {
