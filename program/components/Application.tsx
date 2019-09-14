@@ -6,11 +6,11 @@ import Navigation from 'program/components/Navigation';
 import Reveal from 'program/components/Reveal';
 import Typography from 'program/components/Typography';
 
-import Engineer from 'program/components/views/Engineer';
+import Engineer from 'program/components/roles/Engineer';
 
 import Palette from 'program/theme/Palette';
 
-enum Display {
+enum Role {
     Artist = 'Digital Artist',
     Engineer = 'Software Engineer',
     Human = 'Human Being'
@@ -18,8 +18,8 @@ enum Display {
 
 class Application extends Cortex.Component {
 
-    private display: Display = Display.Engineer;
     private ready: boolean = false;
+    private role: Role = Role.Engineer;
 
     protected handleComponentReady(): void {
         this.ready = true;
@@ -42,40 +42,40 @@ class Application extends Cortex.Component {
                     <Reveal animation='fade' delay={ 100 } id='reveal'>
                         <Navigation id='navigation'>
                             <Navigation.Item
-                                active={ this.display === Display.Engineer }
-                                name={ Display.Engineer }
-                                onclick={ () => this.update({ display: Display.Engineer }) }/>
+                                active={ this.role === Role.Engineer }
+                                name={ Role.Engineer }
+                                onclick={ () => this.update({ role: Role.Engineer }) }/>
                             <Navigation.Item
-                                active={ this.display === Display.Artist }
-                                name={ Display.Artist }
-                                onclick={ () => this.update({ display: Display.Artist }) }/>
+                                active={ this.role === Role.Artist }
+                                name={ Role.Artist }
+                                onclick={ () => this.update({ role: Role.Artist }) }/>
                             <Navigation.Item
-                                active={ this.display === Display.Human }
-                                name={ Display.Human }
-                                onclick={ () => this.update({ display: Display.Human }) }/>
+                                active={ this.role === Role.Human }
+                                name={ Role.Human }
+                                onclick={ () => this.update({ role: Role.Human }) }/>
                         </Navigation>
                     </Reveal>
                     <Flex direction='vertical' grow shrink>
                         <Reveal delay={ 150 } duration={ 800 }>
                             <Flex id='header'>
-                                { this.display === Display.Engineer && [
+                                { this.role === Role.Engineer && [
                                     <Reveal delay={ this.ready ? 0 : 475 }>
-                                        <Typography size={ 1.33 } type='heading'>
-                                            { Display.Engineer }
+                                        <Typography bold size={ 1.33 } type='heading'>
+                                            { Role.Engineer }
                                         </Typography>
                                     </Reveal>
                                 ] }
-                                { this.display === Display.Artist && [
+                                { this.role === Role.Artist && [
                                     <Reveal delay={ this.ready ? 0 : 475 }>
-                                        <Typography size={ 1.33 } type='heading'>
-                                            { Display.Artist }
+                                        <Typography bold size={ 1.33 } type='heading'>
+                                            { Role.Artist }
                                         </Typography>
                                     </Reveal>
                                 ] }
-                                { this.display === Display.Human && [
+                                { this.role === Role.Human && [
                                     <Reveal delay={ this.ready ? 0 : 475 }>
-                                        <Typography size={ 1.33 } type='heading'>
-                                            { Display.Human }
+                                        <Typography bold size={ 1.33 } type='heading'>
+                                            { Role.Human }
                                         </Typography>
                                     </Reveal>
                                 ] }
@@ -83,31 +83,22 @@ class Application extends Cortex.Component {
                         </Reveal>
                         <Flex grow shrink style={ { height: '0' } }>
                             <Flex grow shrink>
-                                { this.display === Display.Engineer && [
+                                { this.role === Role.Engineer && [
                                     <Reveal animation='fade' delay={ this.ready ? 200 : 625 } duration={ this.ready ? 600 : 800 } id='display'>
                                         <Engineer/>
                                     </Reveal>
                                 ] }
-                                { this.display === Display.Artist && [
+                                { this.role === Role.Artist && [
                                     <Reveal animation='fade' delay={ this.ready ? 200 : 625 } duration={ this.ready ? 600 : 800 } id='display'>
                                         <Engineer/>
                                     </Reveal>
                                 ] }
-                                { this.display === Display.Human && [
+                                { this.role === Role.Human && [
                                     <Reveal animation='fade' delay={ this.ready ? 200 : 625 } duration={ this.ready ? 600 : 800 } id='display'>
                                         <Engineer/>
                                     </Reveal>
                                 ] }
                             </Flex>
-                            <Reveal animation='fade' delay={ 333 } duration={ 600 } id='info'>
-                                <Flex grow shrink>
-                                    <Navigation dense id='menu'>
-                                        <Navigation.Item icon='account_circle' name='Résumé' onclick={ () => window.open('https://docs.google.com/document/d/10Kq_jDnkFVPuxBxxP4kqqXT6z8J1-4cSl_hR0c52hss/edit?usp=sharing', '_blank') }/>
-                                        <Navigation.Item icon='code' name='GitHub' onclick={ () => window.open('https://github.com/ndugger', '_blank') }/>
-                                        <Navigation.Item icon='gavel' name='LinkedIn' onclick={ () => window.open('https://www.linkedin.com/in/nick-dugger/', '_blank') }/>
-                                    </Navigation>
-                                </Flex>
-                            </Reveal>
                         </Flex>
                     </Flex>
                 </Flex>
@@ -168,7 +159,10 @@ class Application extends Cortex.Component {
             }
 
             #logo {
-                background-color: ${ Palette.black.opacity(0.725) };
+                background-color: ${ Palette.primary.medium };
+                box-shadow:
+                    0 0 32px ${ Palette.main.dark.opacity(0.8) },
+                    0 0 12px ${ Palette.primary.medium.opacity(0.5) };
                 color: ${ Palette.white };
                 height: 48px;
                 line-height: 47px;
@@ -203,7 +197,7 @@ class Application extends Cortex.Component {
                 background-size: cover;
                 bottom: 0;
                 left: 0;
-                opacity: 0.08;
+                opacity: 0.09;
                 position: absolute;
                 right: 0;
                 top: 0;

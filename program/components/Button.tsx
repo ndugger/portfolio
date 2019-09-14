@@ -10,7 +10,7 @@ class Button extends Cortex.Component {
 
     private hover: boolean;
 
-    public color: 'primary' | 'secondary' = 'primary';
+    public color: 'primary' | 'secondary' | 'tertiary' = 'tertiary';
     public dense: boolean;
     public full: boolean;
 
@@ -22,13 +22,13 @@ class Button extends Cortex.Component {
 
         return [
             <Block inline { ...handlers }>
-                <Typography bold size={ this.dense ? 0.8 : 1 }>
+                <Typography size={ this.dense ? 0.8 : 1 }>
                     { this.textContent }
                 </Typography>
                 { this.hover && [
                     <Reveal color={ this.color } duration={ 250 } id='hover'>
                         <Block inline>
-                            <Typography bold size={ this.dense ? 0.8 : 1 }>
+                            <Typography size={ this.dense ? 0.8 : 1 }>
                                 { this.textContent }
                             </Typography>
                         </Block>

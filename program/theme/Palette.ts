@@ -17,11 +17,15 @@ namespace Palette {
     };
 
     export const primary = {
-        medium: Color.rgb(5, 158, 83)//Color.rgb(95, 53, 192)
+        medium: Color.rgb(25, 55, 204)
     };
 
     export const secondary = {
-        medium: Color.rgb(5, 158, 83)
+        medium: Color.rgb(0, 134, 72)
+    };
+
+    export const tertiary = {
+        medium: Color.rgb(252, 71, 1)
     };
 
     export const textures = {

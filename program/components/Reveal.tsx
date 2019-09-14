@@ -5,7 +5,7 @@ import Palette from 'program/theme/Palette';
 class Reveal extends Cortex.Component {
 
     public animation: 'fade' | 'reveal' = 'reveal';
-    public color: 'primary' | 'secondary' = 'primary';
+    public color: 'primary' | 'secondary' | 'tertiary' = 'primary';
     public delay: number;
     public duration: number;
 
