@@ -1,2 +1,2 @@
 # portfolio
-[foo](./doc/foo.md)
+[foo](doc/foo.md)
